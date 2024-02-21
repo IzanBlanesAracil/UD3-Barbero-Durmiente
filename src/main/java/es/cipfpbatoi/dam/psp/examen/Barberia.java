@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -17,8 +18,8 @@ public class Barberia {
     public void llegadaCliente() {
         lock.lock();
         try {
-            while (barberoOcupado) {
-                clienteEsperando.await();
+            if (barberoOcupado) {
+                clienteEsperando.await(1, TimeUnit.SECONDS);
             }
             colaClientes.add(new Cliente());
             barberoOcupado = true;
@@ -34,7 +35,7 @@ public class Barberia {
     public void atenderCliente() {
         lock.lock();
         try {
-            while (colaClientes.isEmpty()) {
+            if (colaClientes.isEmpty()) {
                 barberoDormido.await();
             }
             Cliente cliente = colaClientes.poll();
