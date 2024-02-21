@@ -1,23 +1,25 @@
 package es.cipfpbatoi.dam.psp.examen;
 
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 
-public class Cliente {
-    Semaphore semaphore = new Semaphore(1);
+public class Cliente implements Runnable {
+    private int id;
 
-    public static void main(String[] args) throws InterruptedException {
-
-        Cliente inicio= new Cliente();
-        inicio.inicio();
-
+    public Cliente(int id) {
+        this.id = id;
     }
-    public void inicio () throws InterruptedException {
 
-        semaphore.acquire();
-        for (int i = 0; i <1000 ; i++) {
-            System.out.println("SECCION CRITICA");
-        }
-        semaphore.release();
+    public Cliente() {
+        this.id += 1;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void run() {
 
     }
 }
