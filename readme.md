@@ -94,3 +94,43 @@ Es muy importante que te plantees primero el diseño de la solución antes de em
 [ThreadLocalRandom]: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadLocalRandom.html
 [LinkedList]: https://docs.oracle.com/javase/8/docs/api/java/util/LinkedList.html
 [Queue]: https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html
+
+Puntos Clave para la Reflexión:
+
+1.- Decisión del Cliente: Considera cómo un cliente decide si esperará o se irá cuando llegue a la barbería. ¿Qué 
+factores influyen en esta decisión y cómo se puede implementar esta lógica de manera que sea coherente con el
+comportamiento esperado?
+
+Los factores son que si el cliente viene y están todas las sillas llenas para atender al barbero tendría que ir otro día
+si no es así puede esperar en alguna de las sillas.
+
+
+2.- Manejo de la Cola de Espera: Reflexiona sobre la estructura de datos que podría representar mejor la cola de espera.
+¿Cómo garantizarías que los clientes sean atendidos en el orden correcto, especialmente cuando el barbero se desocupa y 
+está listo para atender al siguiente cliente?
+
+El manejo de la cola de espera se puede controlar haciendo uso de una lista de tipo LinkedList que permite tanto para
+añadir como eliminar en la primera posición, última posición o en cualquiera. Para controlar que las silla estén vacías
+lógicamente, se tiene que condicionar si la lista está vacía, en caso de lo contrarío puede ser que las sillas no estén
+todas llenas, recorriendo la lista y con la misna condición de que si está vaciá algún sitio el cliente aproveche esa 
+silla vaciá para esperar hasta que al barbero lo pueda atender. Si todas las sillas están llenas, no lo meterá en la 
+lista de las sillas y tendra que venir otro día.
+
+3.- Concurrencia y Sincronización: Piensa en cómo gestionarías la concurrencia en este escenario. ¿Cómo asegurarías que 
+el barbero no sea despertado por un cliente cuando ya está atendiendo a otro? ¿Cómo manejarías las situaciones en las 
+que múltiples clientes llegan al mismo tiempo cuando solo queda una silla de espera disponible?
+
+Normalmente si en la barbería no hay ningún cliente tendrá que dormir, pero si ha llegado un cliente a la barbería, el 
+barbero se despertará para poder atenderlo.
+
+Para manejar que los clientes entren a la barbería a la vez, se necesitará utilizar el objeto semaphore, que permite 
+controlar cuantos hilos pueden realizar la ejecución al mismo tiempo (uno en uno, dos en dos...)
+
+4.- Justicia y Eficiencia: Considera el equilibrio entre la justicia (asegurando que todos los clientes tengan una 
+oportunidad justa de ser atendidos) y la eficiencia (minimizando el tiempo de espera para los clientes y el tiempo 
+inactivo para el barbero). ¿Cómo impactan tus decisiones de diseño en este equilibrio?
+
+
+
+
+

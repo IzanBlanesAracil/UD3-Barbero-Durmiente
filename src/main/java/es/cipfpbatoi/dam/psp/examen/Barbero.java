@@ -17,8 +17,8 @@ public class Barbero implements Runnable{
             try {
                 Cliente cliente = new Cliente();
                 shop.atenderCliente();
-                System.out.println("Barber is serving customer " + cliente.getId());
-                Thread.sleep(random.nextInt(1000) + 1000); // Simulate service time
+                System.out.println("El barbero atiende al cliente " + cliente.getId());
+                Thread.sleep(random.nextInt(1000) + 1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
