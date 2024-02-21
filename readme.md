@@ -101,9 +101,9 @@ Puntos Clave para la Reflexión:
 factores influyen en esta decisión y cómo se puede implementar esta lógica de manera que sea coherente con el
 comportamiento esperado?
 
-Los factores son que si el cliente viene y están todas las sillas llenas para atender al barbero tendría que ir otro día
-si no es así puede esperar en alguna de las sillas.
-
+Los factores son que si el cliente viene y están todas las sillas ocupadas para atender al barbero, tendría que ir otro 
+día o en otro momento más tarde. También, si no es así, puede esperar un tiempo en la barbería a que alguna de las
+sillas quede vacía.
 
 2.- Manejo de la Cola de Espera: Reflexiona sobre la estructura de datos que podría representar mejor la cola de espera.
 ¿Cómo garantizarías que los clientes sean atendidos en el orden correcto, especialmente cuando el barbero se desocupa y 
@@ -130,6 +130,10 @@ controlar cuantos hilos pueden realizar la ejecución al mismo tiempo (uno en un
 oportunidad justa de ser atendidos) y la eficiencia (minimizando el tiempo de espera para los clientes y el tiempo 
 inactivo para el barbero). ¿Cómo impactan tus decisiones de diseño en este equilibrio?
 
+Yo creo que mi diseño es justo y tiene sentido, puesto que entiendo que es objetivo que aquel que primero llegue a la 
+barbería sea la persona primera en ser atendida, todo ello teniendo en cuenta que existan sillas libres, haciendo que 
+haya equilibrio entre las sillas disponibles y la justicia de mantener un orden de llegada y las distintas opciones de 
+espera si las sillas están llenas.
 
 
 
